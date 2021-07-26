@@ -1,0 +1,12 @@
+br\vianna\prova\soccer\models\Jogos.class
+br\vianna\prova\soccer\MB\cadastroJogoMB.class
+br\vianna\prova\soccer\MB\cadastroTimeMB.class
+br\vianna\prova\soccer\dao\timeDao.class
+br\vianna\prova\soccer\models\Time.class
+br\vianna\prova\soccer\MB\EStatusCrud.class
+br\vianna\prova\soccer\MB\templateMB.class
+br\vianna\prova\soccer\dao\jogoDao.class
+br\vianna\prova\soccer\config\DefaultView.class
+br\vianna\prova\soccer\dto\ListTimeDTO.class
+br\vianna\prova\soccer\ProvaApplication.class
+br\vianna\prova\soccer\dto\ListJogosDTO.class

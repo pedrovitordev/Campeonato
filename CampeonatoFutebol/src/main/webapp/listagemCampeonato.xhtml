@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="content">
+
+        <br/>
+        <center>
+            <h1> Classificação &amp; Pontos</h1> 
+        </center> 
+        <br/>
+        <h:panelGroup  >
+            <h:form>
+                <p:panel header="Pesquisar" >
+
+                    <!-- Pesquisar --> 
+                    <h:panelGrid columns="4">
+
+                        <font color="black"> Nome do Time:</font> 
+                        <h:inputText value="#{cadTime.valor}" />
+                        <h:column />  
+                        <h:commandButton class="btn btn-primary" value="Pesquisar" action="#{cadTime.pesqNomeList()}" />    
+                    </h:panelGrid> 
+                </p:panel> 
+            </h:form>
+            <br/>           
+            
+            <p:panel header="Situação campeonato" >
+                <p:dataTable  var="list" value="#{cadTime.listaTotal}" rows="5"
+                              emptyMessage="Não há jogos">
+
+                    <p:column headerText="Classificação" >
+                        <h:outputText  value="#{list.classificacao}" />
+                    </p:column>
+
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{list.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Sigla">
+                        <h:outputText value="#{list.sigla}" />
+                    </p:column>
+
+                    <p:column headerText="Data fundação">
+                        <h:outputText  value="#{list.anoDeFund}"/>
+                    </p:column>
+
+                    <p:column headerText="Pontos">
+                        <h:outputText  value="#{list.pontuacao}"/>
+                    </p:column>
+
+                </p:dataTable>
+            </p:panel> 
+        </h:panelGroup  >   
+        
+    </ui:define>
+    
+</ui:composition>

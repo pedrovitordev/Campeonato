@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="content">
+        <br/>
+        <center>
+            <h1> Cadastro &amp; Jogos</h1> 
+        </center> 
+        <h:messages style="color: red" /> 
+        <br/>
+        
+        <h:panelGroup rendered="#{cadJogo.status == 'VIEW'}" >
+            
+            
+            <p:panel header="Pesquisar" >
+               
+                <!-- Pesquisar -->
+                <h:panelGrid columns="4">
+                 <h:form>
+                    <font color="black"> Jogos</font> 
+                    <h:inputText value="#{cadJogo.valor}"/>
+                    <h:column />              
+                    <h:commandButton class="btn btn-primary" value="Pesquisar" action="#{cadJogo.pesqNome()}"  />
+                        <h:commandButton class="btn btn-secondary" value="Novo jogo" action="#{cadJogo.trocar()}" />     
+                    </h:form>
+                </h:panelGrid> 
+                
+            </p:panel>
+           
+            <br/>  
+            
+           <p:panel header="Lista Jogos">
+               <p:dataTable  var="jogo" value="#{cadJogo.lista}" rows="5"
+                                emptyMessage="Não há jogo cadastrado">
+        
+                        <p:column headerText="Time A">
+                            <h:outputText value="#{jogo.nomeTimeA}" />                    
+                        </p:column>
+
+                        <p:column headerText="Gols">
+                            <h:outputText value="#{jogo.numeroGolsTimeA}" />                    
+                        </p:column>
+
+                        <p:column headerText="VS">
+                        </p:column>
+
+                        <p:column headerText="Time B" >
+                            <h:outputText  value="#{jogo.nomeTimeB}" />
+                        </p:column>
+
+                        <p:column headerText="Gols">
+                            <h:outputText  value="#{jogo.numeroGolsTimeB}"/>                    
+                        </p:column>
+
+                        <p:column headerText="Vencedor">
+                            <h:outputText value="#{jogo.vencedor}" />                 
+                        </p:column>
+                        
+                        <p:column headerText="Alterar(A) Deletar(X)">
+
+                            <h:form>
+                                <h:commandLink value="A" action="#{cadJogo.editarJogo(jogo.idJogo)}" />
+                                <h:commandLink value="X" action="#{cadJogo.deletarJogo(jogo.idJogo)}" />
+                            </h:form>
+
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel> 
+        </h:panelGroup  >   
+       
+        
+         <!-- Insert -->
+         <h:panelGroup rendered="#{cadJogo.status == 'INSERT' || cadJogo.status == 'EDIT'}"> 
+
+            <h:messages style="color: red" />   
+
+            <h1>Cadastro de jogos</h1>
+
+            <h:form>
+                <br />
+
+                <center>
+                    <fieldset>
+
+                        <h:panelGrid columns="4" class="w-100">
+
+                            <div class="form-group">
+                                
+                                 
+                                Nome time A:<h:selectOneMenu value="#{cadJogo.timeAselecionado}">         
+                                    <f:selectItem itemLabel="-- Selecione --" />
+                                    <f:selectItems  value="#{cadTime.lista}" var="lista"
+                                                    itemValue="#{lista.idTime}" itemLabel="#{lista.nome}"     />
+                                </h:selectOneMenu>     
+                                
+                                Nome time B:<h:selectOneMenu value="#{cadJogo.timeBselecionado}">         
+                                    <f:selectItem itemLabel="-- Selecione --"  />
+                                    <f:selectItems  value="#{cadTime.lista}" var="lista"
+                                                    itemValue="#{lista.idTime}" itemLabel="#{lista.nome}"     />
+                                </h:selectOneMenu> 
+                                
+                                Gol time A <h:inputText value="#{cadJogo.jogos.numeroGolsTimeA}" />                           
+                                Gol time B <h:inputText value="#{cadJogo.jogos.numeroGolsTimeB}" />
+                                                   
+                            </div>
+
+                        </h:panelGrid>
+
+                    </fieldset>
+                </center>   
+                <br />
+                <h:commandButton class="btn btn-primary" value="Voltar" action="#{cadJogo.voltar()}" />
+                <h:commandButton class="btn btn-primary" value="Salvar" action="#{cadJogo.salvar()}"/> 
+            </h:form>
+
+        </h:panelGroup>     
+        
+        
+        
+        
+           
+        
+        
+    </ui:define>
+
+</ui:composition>

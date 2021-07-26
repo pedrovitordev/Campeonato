@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <title>Sport Zone</title>
+        
+        
+    </h:head>
+    
+    
+    
+    <h:body>
+
+   
+        <!-- Header -->
+<div id="header">
+  <div class="shell">
+    <!-- Logo -->
+    <h1 id="logo" class="notext"><a href="#">Pedrin Sport Portal</a></h1>
+    <!-- End Logo -->
+  </div>
+</div>
+<!-- End Header -->
+<!-- Navigation -->
+<div id="navigation">
+  <div class="shell">
+    <div class="cl">&nbsp;</div>
+    <ul>
+        <li>
+            <h:form> 
+                <h:commandLink  value="Home" action="#{templateMB.home()}" />
+            </h:form>  
+        </li>
+
+        <li>
+            <h:form> 
+                <h:commandLink  value="Cadastro  &amp; Time" action="#{templateMB.cadastroTime()}" />
+            </h:form>  
+        </li>
+
+        <li>
+            <h:form> 
+                <h:commandLink  value="Cadastro &amp; Jogos" action="#{templateMB.cadastroJogos()}" />
+            </h:form>  
+        </li>
+
+        <li>
+            <h:form> 
+                <h:commandLink  value="Listagem Campeonato" action="#{templateMB.listagem()}" />
+            </h:form>  
+        </li>
+    </ul>
+    <div class="cl">&nbsp;</div>
+  </div>
+</div>
+<!-- End Navigation -->
+<!-- Main -->
+<div id="main">
+  <div class="shell">
+    <div class="cl">&nbsp;</div>
+    <div id="sidebar">
+      <h2>news spot</h2>
+      <ul>
+        <li> <small class="date">12.05.09</small>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </li>
+        <li> <small class="date">12.05.09</small>
+          <p>Donec venenatis varius urna vitae congue.</p>
+        </li>
+        <li> <small class="date">12.05.09</small>
+          <p>Ullam vel neque ut lectus cursus dapibus.</p>
+        </li>
+        <li> <small class="date">12.05.09</small>
+          <p>Praesent pellentesque arcu convallis ante dignissim quis ultrices felis iaculis.</p>
+        </li>
+        <li> <small class="date">12.05.09</small>
+          <p>Ut eget lorem elit. Donec lorem eros, congue vel mollis non, tincidunt a nisl.</p>
+        </li>
+        <li> <small class="date">12.05.09</small>
+          <p>Curabitur consectetur tellus a diam tincidunt pellentesque. </p>
+        </li>
+      </ul>
+      <a href="#" class="archives">News Archives</a> </div>
+      
+    <div id="content">
+    
+         
+        <div id="content" class="center_content">
+            <ui:insert name="content"></ui:insert>
+        </div>
+        
+        
+    </div>
+    
+    <div class="cl">&nbsp;</div>
+  </div>
+</div>
+<!-- End Main -->
+<!-- Footer -->
+<div id="footer">
+  <div class="shell">
+    <div class="cl">&nbsp;</div>
+    <a href="#" class="left">TERMS OF USE</a> <a href="#" class="left">PRIVACY POLICY</a>
+    <p class="right">&copy; Sitename.com. Design by <a href="http://chocotemplates.com">ChocoTemplates.com</a></p>
+    <div class="cl">&nbsp;</div>
+  </div>
+</div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+        
+    </h:body>
+
+</html>

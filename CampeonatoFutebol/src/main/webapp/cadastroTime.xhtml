@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+    <ui:define name="content">
+        <br/>
+        <center>
+            <h1> Cadastro &amp; Times</h1> 
+        </center> 
+        <h:messages style="color: red" /> 
+        <br/>
+        <h:panelGroup rendered="#{cadTime.status == 'VIEW'}" >
+            <h:form>
+                <p:panel header="Pesquisar" >
+
+                    <!-- Pesquisar --> 
+                    <h:panelGrid columns="4">
+
+                        <font color="black"> Nome do Time:</font> 
+                        <h:inputText  value="#{cadTime.valor}"/>
+                        <h:column />  
+                        <h:commandButton class="btn btn-primary" value="Pesquisar" action="#{cadTime.pesqNome()}"/>
+                        <h:commandButton class="btn btn-secondary" value="Novo time" action="#{cadTime.trocar()}"/>                              
+                    </h:panelGrid> 
+                </p:panel> 
+            </h:form>
+            <br/>           
+
+            <p:panel header="Lista Times" >
+                    <p:dataTable  var="time" value="#{cadTime.lista}" rows="5"
+                                  emptyMessage="Não há time cadastrado">
+
+                        <p:column headerText="Classificação" >
+                            <h:outputText value="#{time.classificacao}"  />
+                        </p:column>
+                                            
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{time.nome}" />
+                        </p:column>
+
+                        <p:column headerText="Sigla">
+                            <h:outputText value="#{time.sigla}" />
+                        </p:column>
+
+                        <p:column headerText="Data fundação">
+                            <h:outputText value="#{time.anoDeFund}" />
+                        </p:column>
+                      
+                        <p:column headerText="Alterar">
+                            <h:form>
+                                <h:commandLink value="A" action="#{cadTime.editarTime(time.idTime)}" />
+                            </h:form>
+                        </p:column>
+
+                        <p:column headerText="Apagar">
+                            <h:form>
+                                <h:commandLink value="X" action="#{cadTime.deletarTime(time.idTime)}" />
+                            </h:form>
+                        </p:column>
+
+                    </p:dataTable>
+                </p:panel> 
+        </h:panelGroup  >         
+
+        <!-- Insert -->
+        <h:panelGroup rendered="#{cadTime.status == 'INSERT' || cadTime.status == 'EDIT'}" > 
+
+            <h:messages style="color: red" />   
+
+            <h1>Cadastro de Times</h1>
+
+            <h:form>
+                <br />
+
+                <center>
+                    <fieldset>
+
+                        <h:panelGrid columns="1" class="w-100">
+
+                            <div class="form-group">
+                                <center>Nome</center>  <h:inputText value="#{cadTime.time.nome}" required="true" requiredMessage="Nome não pode ser vazio" />
+                                <center>Sigla</center> <h:inputText value="#{cadTime.time.sigla}" required="true" requiredMessage="Sigla não pode ser vazio" />    
+                                <center>Ano de fundação:</center> <h:inputText value="#{cadTime.time.anoDeFund}" required="true" requiredMessage="Ano de fundação não pode ser vazio" />  <!-- mudar para data -->
+                                <center>Classificação:</center>
+                                <input type="text"  disabled="" value="#{cadTime.time.classificacao}"  /> <!-- sempre inicalizar com 0 -->
+                            </div>
+
+                        </h:panelGrid>
+
+                    </fieldset>
+                </center>   
+                <br />
+                <h:commandButton class="btn btn-primary" value="Voltar" action="#{cadTime.voltar()}"/>
+                <h:commandButton class="btn btn-primary" value="Salvar" action="#{cadTime.salvar()}" /> 
+            </h:form>
+
+        </h:panelGroup>     
+
+
+
+
+
+
+
+
+    </ui:define>       
+</ui:composition>
